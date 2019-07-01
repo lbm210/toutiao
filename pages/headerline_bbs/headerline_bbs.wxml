@@ -1,0 +1,179 @@
+<import src="/wxParse/wxParse.wxml" />
+<import src="../load/load.wxml" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view wx:else class="container">
+  <view class='top-title'>
+    {{detaileData.title}}
+  </view>
+  <view class='article-info'>
+    <text wx:if="{{shieldIsOpen==0}}" class='fblue'>{{detaileData.author}}</text>
+    <text wx:if="{{shieldIsOpen==1}}" class='fblue'>论坛精选</text>
+    <text>{{detaileData.boardName}}</text>
+    <text>{{detaileData.time}}</text>
+  </view>
+  <!-- 用户文章 -->
+  <view class='content wxParse-box'>
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    <template wx:if="{{memoPart2.nodes}}" is="wxParse" data="{{wxParseData:memoPart2.nodes}}" />
+    <template wx:if="{{memoPart3.nodes}}" is="wxParse" data="{{wxParseData:memoPart3.nodes}}" />
+    <template wx:if="{{memoPart4.nodes}}" is="wxParse" data="{{wxParseData:memoPart4.nodes}}" />
+    <template wx:if="{{memoPart5.nodes}}" is="wxParse" data="{{wxParseData:memoPart5.nodes}}" />
+  </view>
+  <!-- 阅读数以及分享海报 -->
+  <view class='content-data'>
+    <view>
+      <text wx:if="{{rd==0}}">阅读{{detaileData.readerNum}}</text>
+      <text wx:if="{{rd>0}}">热度{{rd}}</text>
+      <text>评论{{detaileData.pinglunNum}}</text>
+    </view>
+    <view wx:if="{{shieldIsOpen==0}}" class='disflex share-btn-box'>
+      <view class='mr40'>
+        <image src="http://img.pccoo.cn/headline-xcx/images/column-wx.png"></image>好友
+        <button type="default" open-type="share">发给好友</button>
+      </view>
+      <view>
+        <image src='http://img.pccoo.cn/headline-xcx/images/column-circle.png'></image>朋友圈
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <button wx:if="{{hasUserInfo}}" bindtap="shareFn">生成海报</button>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{shieldIsOpen==0&&shieldIsOpen==0}}" class='tips disflex'>
+    <image class='logo' src='{{logo}}' mode="aspectFill"></image>
+    <text class='red'>{{site}}</text>
+    <text>旗下小程序，关注本地人家乡事</text>
+  </view>
+  <!-- 可能感兴趣的 -->
+  <view class='his-info'>
+    <view class='his-txt'>- 可能感兴趣的 -</view>
+    <block wx:for="{{itemsList}}" wx:key="unique">
+    <navigator url="{{item.url}}" class='cont-item disflex'>
+      <view class='item-l flexn'>
+        <view class='title'>{{item.title}}</view>
+        <view class='info'>
+          <text>{{item.address}}</text>
+          <text>{{item.readerNum}}</text>
+        </view>
+      </view>
+      <view class='item-r'>
+        <view class='video-box' wx:if="{{item.IsVideo==1}}">
+          <image mode="aspectFill" class='video' src="{{item.img}}"></image>
+          <view class='mask'></view>
+        </view>
+        <image wx:if="{{item.IsVideo==0}}" class='pic' src="{{item.img}}" lazy-load='true' mode='aspectFill'></image>
+      </view>
+    </navigator>
+  </block>
+  </view>
+  <!-- <navigator class='link-zl' src="{{zhuanlan.url}}">
+    进入<text>{{zhuanlan.title}}</text>专栏,查看往期更多精彩
+  </navigator> -->
+  <!-- 评论 -->
+  <view class='pinglun'>
+    <view wx:if="{{pinglun.length>0}}" class='his-txt'>- 热门评论 -</view>
+    <block wx:for="{{pinglun}}" wx:key="key">
+      <view class='pl-item disflex'>
+        <image class='tx' src="{{item.tx}}" mode="aspectFill"></image>
+        <view class='user flexn'>
+          <view class='user-info'>
+            <text class='username'>{{item.userName}}</text>
+            <text class="lv {{item.lv<21 && item.lv > 10?'blue':''}} {{item.lv<11?'green':''}}">LV.{{item.lv}}</text>
+          </view>
+          <view class='other-info'>
+            <text class='time'>{{item.time}}</text>
+            <text class='address'>{{item.address}}</text>
+          </view>
+           <!-- 评论内容 -->
+          <view class='txt'>
+          <rich-text nodes="{{item.txt}}"></rich-text>
+          </view>
+          <!-- <view class='txt'>
+            {{item.txt}}
+            <image class='ss-pic' wx:if="{{item.sPic[0]}}" mode="aspectFill" wx:for="{{item.sPic}}" wx:for-item="items" src="{{items}}"></image>  
+          </view>
+          <view wx:if="{{item.img[0]}}" class='pic-box'>
+              <image wx:for="{{item.img}}" mode="aspectFill" wx:for-item="items" src="{{items}}" class="{{item.img.length > 1?'pics':'pic'}}"></image>
+            </view> -->
+          <view class='huifu' wx:if="{{item.child.length}}">
+            <view class='huifu-item'  wx:for="{{item.child}}" wx:for-item="items" wx:if="{{index < item.childMax}}">
+              <text class='huifu-user'>{{items.userName}}：</text>
+              <!-- <text>{{items.txt}}</text> -->
+               <view class='txt'>
+          <rich-text nodes="{{items.txt}}"></rich-text>
+          </view>
+              <text class='time'>{{items.time}}</text>
+            </view>
+            <view class='more' id="{{index}}" bindtap='more' wx:if="{{item.length > 2}}">{{item.moreTxt}}</view>     
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- bottom -->
+  <view wx:if="{{pinglun.length>0&&shieldIsOpen==0}}" class='link-app'>
+    更多精彩回复，请打开{{site}}（城市通APP）查看
+  </view>
+</view>
+<view wx:if="{{shieldIsOpen==0}}" class='down-app'>
+  <text class='guanz flexn'>下载 {{site}} 城市通APP</text>
+</view>
+<!-- 分享，保存图片 -->
+<view wx:if="{{shieldIsOpen==0}}" class='fixed-box'>
+  <view class='share-save disflex'>
+    <view class='share flexn'>
+      <image src="../../images/share.jpg" mode="aspectFill"></image> 
+      分享给朋友
+       <button open-type='share'></button>
+    </view>
+    <view class='save flexn'>
+      <image src="../../images/save.jpg" mode="aspectFill"></image>
+      生成海报
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <button wx:if="{{hasUserInfo}}" bindtap="shareFn">生成海报</button>
+    </view>
+    
+  </view>
+</view>
+<!-- 占位 -->
+<view class='bottom-place'></view>
+<!--邀请好友一起-->
+<view class="share-cover" wx:if="{{flag}}">
+    <view class="share-box">
+        <button class="v-style pop-close" type="default" bindtap="cancelShareFn"></button>
+        <view class="poster">
+            <view class="poster-box">
+                <view class="ban-box">
+                    <image class="banner" mode="aspectFill" src="{{banner}}"></image>
+                    <view class="logo-box">
+                        <image mode="aspectFill" class="logo" src="{{logo}}"></image>
+                        <view>{{siteName}}</view>
+                    </view>
+                </view>
+                <view class="bot-box">
+                    <text class="tit">{{popTitle}}</text>
+                    <view class="disflex">
+                        <image mode="aspectFill" class="ewx" src="{{ewx}}"></image>
+                        <view class="flexn">
+                            <view class="p1">
+                                <image mode="aspectFill" class="avatar" src="{{avatar}}"></image>
+                                <text class="nickName">{{nickName}}</text>
+                                <text>正在读这篇文章</text>
+                            </view>
+                            <text class="p2">长按小程序码，进入<text class="site">{{popSite}}</text>查看详情</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+           <view class="poster-tip">{{posterTip}}</view>
+           <button class="save-btn" bindtap="{{saveBind}}">{{saveBtn}}</button>
+        </view>
+    </view>
+      <view class="canvas-box">
+          <canvas canvas-id="mycanvas"/>
+      </view>
+</view>
+<!-- 回到首页 -->
+<template is="home" />
+<!--  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button> -->

@@ -1,0 +1,2 @@
+<!--pages/weixinlink/weixinlink.wxml-->
+  <web-view src="{{url}}"></web-view>

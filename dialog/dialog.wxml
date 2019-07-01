@@ -1,0 +1,49 @@
+<!--dialog/dialog.wxml-->
+<template name="haibao">
+     
+    <!--邀请好友一起-->
+    <view class="share-cover" wx:if="{{flag}}">
+        <view class="share-box">
+            <button class="v-style pop-close" type="default" bindtap="cancelShareFn"></button>
+            <view class="poster">
+                <view class="poster-box">
+                    <view class="ban-box">
+                        <image class="banner" mode="aspectFill" src="{{banner}}"></image>
+                        <view class="logo-box">
+                            <image mode="aspectFill" class="logo" src="{{logo}}"></image>
+                            <view>{{siteName}}</view>
+                        </view>
+                    </view>
+                    <view class="bot-box">
+                        <text class="tit">{{title}}</text>
+                        <view class="disflex">
+                            <image mode="aspectFill" class="ewx" src="{{ewx}}"></image>
+                            <view class="flexn">
+                                <view class="p1">
+                                    <image mode="aspectFill" class="avatar" src="{{avatar}}"></image>
+                                    <text class="nickName">{{nickName}}</text>
+                                    <text>正在读这篇文章</text>
+                                </view>
+                                <text class="p2">长按小程序码，进入<text class="site">{{site}}</text>查看详情</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+               <view class="poster-tip">{{posterTip}}</view>
+               <button class="save-btn" bindtap="{{saveBind}}">{{saveBtn}}</button>
+            </view>
+        </view>
+          <view class="canvas-box">
+              <canvas canvas-id="mycanvas"/>
+          </view>
+    </view>
+</template>
+<template name="load-fail">   
+  <view class="page-load-v">
+          <view class="v-img-fial">           
+            <view class="v-tip">加载失败</view>
+            <view class="reload-v" bindtap='reload'>重新加载</view>
+          </view>
+          
+     </view>
+</template>

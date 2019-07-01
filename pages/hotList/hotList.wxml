@@ -1,0 +1,48 @@
+<!--pages/hotList/hotList.wxml-->
+<import src="../footer/footer.wxml" />
+<import src="../load/load.wxml" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view wx:else class='container'>
+  <block wx:for="{{itemsList}}" wx:key="unique">
+    <navigator url="{{item.url}}" class='cont-item disflex'>
+      <view class='item-l flexn'>
+        <view class='info disflex'>
+          <text class="num-box {{item.top <= 3?'on':''}}">{{item.top}}</text>
+          <text class="flexn">{{item.readerNum}}热度</text>
+          <text class="r">{{item.address}}</text>
+        </view>
+        <view class='title'>{{item.title}}</view>
+      </view>
+      <view class='item-r'>
+        <!-- <view class='video-box' wx:if="{{item.video}}">
+          <video class='pic' controls="{{false}}" src="{{item.video}}" show-fullscreen-btn="{{false}}" show-center-play-btn="{{false}}">
+            <cover-view class='video-controls'>
+              <cover-image src="{{item.img}}"></cover-image>
+            </cover-view>
+          </video>
+          <view class='mask'></view>
+        </view> -->
+        <view class='video-box' wx:if="{{item.video}}">
+          <image mode="aspectFill" class='video' src="{{item.img}}"></image>
+          <view class='mask'></view>
+        </view>
+        <image wx:if="{{item.img}}" class='pic' src="{{item.img}}" lazy-load='true' mode='aspectFill'></image>
+      </view>
+    </navigator>
+  </block>
+  <view class='hold-bottom' wx:if="{{holdBot.show}}">
+    <view class="loading" wx:if="{{holdBot.loading}}">
+      <text></text>
+      <text></text>
+      <text></text>
+      <text></text>
+      <text></text>
+    </view>
+    {{holdBot.text}}
+  </view>
+</view>
+<!-- 公共导航 -->
+<view class="foot-hold"></view>
+<template is="footer" data="{{navIndex,foter}}" />

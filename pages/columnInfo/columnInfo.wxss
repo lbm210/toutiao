@@ -1,0 +1,36 @@
+/* pages/columnInfo/columnInfo.wxss */
+page{background-color:#f0f0f0;}
+.item-list{padding:34rpx 30rpx 0;background:#fff;}
+.item-list .tit{font-size:32rpx;color:#333;font-weight:bold;display:-webkit-box;overflow:hidden;white-space:normal;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:2;margin-bottom:16rpx;line-height:50rpx;}
+.item-list .item-img{width:100%;height:350rpx;border-radius:16rpx;overflow:hidden;}
+.item-list .item-img image{width:100%;height:100%;}
+.item-list .item-bot{height:80rpx;line-height:80rpx;border-bottom:1rpx solid #f0f0f0;}
+.item-list .bot-l view,.item-list .bot-r view{display:inline-block;font-size:22rpx;color:#999;}
+.item-list .bot-l .name{margin-right:15rpx;}
+.item-list .bot-l .period{margin-right:40rpx;}
+.item-list .bot-r .icon{width:30rpx;height:26rpx;margin:0 10rpx 0 30rpx;vertical-align:-2px;}
+.item-list .bot-r .wx{background:url(http://img.pccoo.cn/headline-xcx/images/column-wx.png);background-size:cover;}
+.item-list .bot-r .circle{background:url(http://img.pccoo.cn/headline-xcx/images/column-circle.png);background-size:cover;}
+.item-list .bot-r button{border:none;background:none;font-size:22rpx;color:#999;padding:0;display:inline-block;height:80rpx;line-height:80rpx;overflow:unset;}
+.item-list .bot-r button::after{display:none;}
+.item-list1{padding:0 0 30rpx;margin-bottom:20rpx;background:#fff;}
+.item-list1.on{padding-bottom:50rpx}
+.item-list1 .item-img{width:100%;height:333rpx;overflow:hidden;position:relative;}
+.item-list1 .item-img image{width:100%;height:100%;}
+.item-list1 .item-img .cover{width:calc(100% - 40rpx);height:60rpx;line-height:60rpx;font-size:20rpx;color:#fff;padding:0 20rpx;position:absolute;left:0;bottom:0;background:-webkit-linear-gradient(top,rgba(0,0,0,0) 0%,rgba(0,0,0,.8) 100%);}
+.item-list1 .cover .flexn view{display:inline-block;}
+.item-list1 .cover .attention .icon{display:inline-block;background:url(http://img.pccoo.cn/headline-xcx/images/column-attention.png);background-size:cover;width:24rpx;height:20rpx;margin-right:10rpx;}
+.item-list1 .txt-box{padding:24rpx 0 0;position:relative;}
+.item-list1 .txt-box .txt{font-size:24rpx;color:#999;line-height:35rpx;height:70rpx;overflow:hidden;margin-right:24rpx;}
+.item-list1 .txt-box.on .txt{height:auto;overflow:unset;}
+.item-list1 .txt-box .icon{width:80rpx;height:70rpx;padding-right:10rpx;float:left;margin-right:20rpx;border-right:1rpx solid #e2e2e2;}
+.item-list1 .txt-box .icon image{width:80rpx;height:70rpx;}
+.item-list1 .txt-box .unfold{font-size:24rpx;color:#f03732;position:absolute;right:24rpx;bottom:0;height:35rpx;line-height:35rpx;width:110rpx;text-align:right;background:-webkit-linear-gradient(left,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 10%);background:linear-gradient(to right,rgba(255,255,255,0) 0%,rgba(255,255,255,1) 25%);}
+.item-list1 .txt-box.on .unfold{bottom:-30rpx}
+.item-list1 .txt-box .row{width:17rpx;height:17rpx;background:url(http://img.pccoo.cn/headline-xcx/images/column-up-down.png);float:right;background-size:100%;background-position:0 0;margin:8rpx 0 0 10rpx;}
+.item-list1 .txt-box.on .row{background-position:0 -17rpx;margin-top:14rpx;
+}
+.item-list .bot-r image{width:30rpx;height:26rpx;margin:0 10rpx 0 30rpx;vertical-align:-2px;}
+.item-list .bot-r view{position:relative;float:left;font-size:22rpx;color:#999;}
+.item-list .bot-r button{position:absolute;top:0;left:0;height:100%;width:100%;opacity:0;}
+.item-list .bot-r button::after{display:none;}

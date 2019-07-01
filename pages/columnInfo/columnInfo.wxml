@@ -1,0 +1,113 @@
+<import src="../load/load.wxml" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view wx:else class="con">
+  <view class="item-list1 {{isShow?'on':''}}" id="{{colinfId}}">
+    <view class="item-img">
+      <image mode="aspectFill" src="{{colinfPicUrl}}"></image>
+      <view class="cover disflex">
+        <view class="flexn">
+          <view class="name">{{colinfName}}</view> · 已更新至第
+          <view class="period">{{colinfPeriod}}</view>期
+        </view>
+        <view class="attention">
+          <view class="icon"></view>{{colinfAtten}}人次关注</view>
+      </view>
+    </view>
+    <view class="txt-box disflex {{isShow?'on':''}}">
+      <view class="icon">
+        <image mode="aspectFill" src="{{colinfIconUrl}}"></image>
+      </view>
+      <view class="txt js-toggle">{{colinfTit}}</view>
+      <view class="unfold" wx:if="{{txtIsShow}}" bindtap="toggle">{{isShow?'收起':'展开'}}
+        <view class="row"></view>
+      </view>
+    </view>
+  </view>
+  <block wx:for="{{columnArticleData}}">
+    <view class="item-list" id="{{item.id}}">
+      <view id="{{item.id}}" bindtap="goArticleInfo">
+        <text class="tit">{{item.tit}}</text>
+        <view class='video-box' wx:if="{{item.video}}">
+          <image mode="aspectFill" class='video' src="{{item.video.pic}}"></image>
+          <view class='mask'></view>
+        </view>
+        <view class="item-img" wx:else="{{!item.video}}">
+          <image mode="aspectFill" src="{{item.picUrl}}"></image>
+        </view>
+      </view>
+      <view class="item-bot disflex">
+        <view class="bot-l flexn">
+          <view class="name">{{item.name}}</view>
+          <view class="period">第{{item.period}}期</view>
+          <view class="read">{{item.read}}阅读</view>
+        </view>
+        <!-- <view class="bot-r">
+          <button type="default" open-type="share" data-tit="{{item.tit}}" data-id="{{item.id}}" data-pic="{{item.picUrl}}">
+            <view class="icon wx"></view>发给好友</button>
+          <button class="friend-circle" type="default">
+            <view class="icon circle"></view>朋友圈</button>
+        </view> -->
+        <view wx:if="{{shieldIsOpen==0}}" class="bot-r">
+          <view>
+            <image src="http://img.pccoo.cn/headline-xcx/images/column-wx.png"></image>好友
+            <button type="default" data-tit="{{item.tit}}" data-id="{{item.id}}" data-pic="{{item.picUrl}}" open-type="share">
+              <view class="icon wx"></view>发给好友</button>
+          </view>
+          <view>
+            <image src='http://img.pccoo.cn/headline-xcx/images/column-circle.png'></image>朋友圈
+            <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+            <button wx:if="{{hasUserInfo}}" data-title="{{item.tit}}" data-id="{{item.id}}" data-pic="{{item.picUrl}}" bindtap="shareFn">生成海报</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class='hold-bottom' wx:if="{{holdBot.show}}">
+    <view class="loading" wx:if="{{holdBot.loading}}">
+      <text></text>
+      <text></text>
+      <text></text>
+      <text></text>
+      <text></text>
+    </view>
+    {{holdBot.text}}
+  </view>
+  <!--邀请好友一起-->
+  <view class="share-cover" wx:if="{{flag}}">
+    <view class="share-box">
+      <button class="v-style pop-close" type="default" bindtap="cancelShareFn"></button>
+      <view class="poster">
+        <view class="poster-box">
+          <view class="ban-box">
+            <image class="banner" mode="aspectFill" src="{{banner}}"></image>
+            <view class="logo-box">
+              <image mode="aspectFill" class="logo" src="{{logo}}"></image>
+              <view>{{siteName}}</view>
+            </view>
+          </view>
+          <view class="bot-box">
+            <text class="tit">{{popTitle}}</text>
+            <view class="disflex">
+              <image mode="aspectFill" class="ewx" src="{{ewx}}"></image>
+              <view class="flexn">
+                <view class="p1">
+                  <image mode="aspectFill" class="avatar" src="{{avatar}}"></image>
+                  <text class="nickName">{{nickName}}</text>
+                  <text>正在读这篇文章</text>
+                </view>
+                <text class="p2">长按小程序码，进入<text class="site">{{popSite}}</text>查看详情</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="poster-tip">{{posterTip}}</view>
+        <button class="save-btn" bindtap="{{saveBind}}">{{saveBtn}}</button>
+      </view>
+    </view>
+    <view class="canvas-box">
+      <canvas canvas-id="mycanvas" />
+    </view>
+  </view>
+</view>

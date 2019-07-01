@@ -1,0 +1,16 @@
+{
+  "extEnable": true,
+  "extAppid": "wxee9b077d9c32bbd6",
+  "ext": {
+    "siteid": 1068,
+    "uid": 24,
+    "xcxid": "wxee9b077d9c32bbd6"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "头条",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  }
+}

@@ -1,0 +1,25 @@
+/**index.wxss**/
+.cont-item{width:100%;border-bottom:1rpx solid #e2e2e2;padding:30rpx 0}
+.cont-item:last-of-type{border:none}
+.cont-item .item-l{display: flex;flex-direction: column;box-sizing: border-box;overflow: hidden}
+.cont-item image{background: #ebebeb}
+.cont-item .item-l text{margin-right:20rpx;
+font-size:22rpx;
+color:#999;
+}
+.cont-item .item-l .info{margin-top:15rpx;display:flex;align-items:center;}
+.cont-item .item-l .zhid{width:60rpx;box-sizing: border-box;text-align: center;line-height: 30rpx;border:1rpx solid #f55b41;font-size:20rpx;color:#f55b41;border-radius:4rpx;}
+.cont-item .item-l .img-box{padding:12rpx 0 20rpx;display: flex;width:100%;}
+.cont-item .item-l .pic2{width:100%;height:350rpx;object-fit: cover;border:none;border-radius:10rpx;}
+.cont-item .item-l .pic3{width:220rpx;height:164rpx;object-fit: cover;margin-right:15rpx;border-radius:10rpx;}
+.cont-item .item-l .pic3:last-child{margin-right:0}
+.cont-item .item-r{width:220rpx;height:164rpx;border-radius:10rpx;overflow: hidden;margin-left:20rpx}
+.cont-item .item-r .pic{width:100%;height:100%;object-fit: cover}
+.cont-item .item-r .video-box{width:100%;height:100%;position: relative}
+.cont-item .item-r .video-box .mask{position: absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0) url(http://img.pccoo.cn/wx/images/video-play.png) no-repeat center center;background-size:60rpx 60rpx}
+.cont-item .item-l .video-box{width:100%;height:350rpx;position: relative}
+.cont-item .item-l .video-box .mask{position: absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0) url(http://img.pccoo.cn/wx/images/video-play.png) no-repeat center center;background-size:90rpx 90rpx}
+.cont-item .item-l .video-box2{width:220rpx;height:164rpx;position: relative;margin-right:15rpx;border-radius:10rpx;overflow: hidden}
+.cont-item .item-l .video-box2 .mask{position: absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0) url(http://img.pccoo.cn/wx/images/video-play.png) no-repeat center center;background-size:60rpx 60rpx}
+.cont-item .item-l .video{width:100%;height:100%;object-fit: cover;border-radius: 10rpx}
+.title{width:100%;display: -webkit-box;overflow: hidden;white-space: normal;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 3;font-size:34rpx;line-height:45rpx;font-weight:bolder}

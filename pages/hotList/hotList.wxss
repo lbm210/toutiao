@@ -1,0 +1,15 @@
+/* pages/hotList/hotList.wxss */
+.cont-item{width:100%;border-bottom:1rpx solid #e2e2e2;padding:30rpx 0}
+.cont-item:last-of-type{border:none}
+.cont-item .item-l{overflow:hidden;margin-right:24rpx}
+.cont-item .item-l text{font-size:22rpx;color:#999;}
+.cont-item .item-l .info{margin-bottom:20rpx;align-items:center;}
+.cont-item .item-l .num-box{font-weight:bold; width:50rpx;height:30rpx;box-sizing:border-box;text-align:center;line-height:32rpx;font-size:20rpx;background:#faf0f0;color:#d31e1e;border-radius:4rpx;margin-right:10rpx;}
+.cont-item .item-l .num-box.on{color:#fff;background:-webkit-linear-gradient(120deg,#ee1a1a,#f55b41);background:linear-gradient(120deg,#ee1a1a,#f55b41);}
+.cont-item .item-l .img-box{padding:12rpx 0 20rpx;display:flex;width:100%;}
+.cont-item .item-l .pic2{width:100%;height:350rpx;object-fit:cover;border:none;border-radius:10rpx;}
+.cont-item .item-l .pic3{width:220rpx;height:164rpx;object-fit:cover;margin-left:15rpx;border-radius:10rpx;}
+.cont-item .item-l .pic3:first-child{margin-left:0}
+.cont-item .item-r{width:220rpx;height:164rpx;border-radius:10rpx;overflow:hidden;background:#f0f0f0;}
+.cont-item .item-r .pic{width:100%;height:100%;object-fit:cover;}
+.title{width:100%;display: -webkit-box;overflow: hidden;white-space: normal;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 3;font-size:34rpx;line-height:45rpx;font-weight:bolder}

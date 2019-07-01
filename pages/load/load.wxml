@@ -1,0 +1,17 @@
+<!--pages/load/load.wxml-->
+<template name="load">
+  <view class='after-bg'>
+    <view class='bg-logo'></view>
+    <view class='txt'>      
+      正在加载，请稍后...
+    </view>
+  </view>
+</template>
+
+<!-- 回到首页 -->
+<template name="home">
+  <navigator class='link-index' open-type="reLaunch" url="../index/index">
+    <image class='shouye' mode="aspectFill" src="../../images/shouye.png"></image>
+    <text>首页</text>
+  </navigator>
+</template>

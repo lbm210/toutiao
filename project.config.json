@@ -1,0 +1,62 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.4",
+	"appid": "wxee9b077d9c32bbd6",
+	"projectname": "%E5%A4%B4%E6%9D%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "详情页",
+					"pathName": "https://mp.weixin.qq.com/s?src=11&timestamp=1559109601&ver=1635&signature=kyEPnkJlOv5KuHy3Biz4Kkj0wV9-jtbrLF*MZIrrRqz2WkpKFeaw1Qtb2oOwcywjwZYUcx*er7OH0yrGqSUKO8vvp1H27ioQO1MdkWY8Fg18rzje8kPlzfboQ67-tBCM&new=1",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

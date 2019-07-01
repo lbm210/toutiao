@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<import src="../footer/footer.wxml"/>
+<import src="../load/load.wxml" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view wx:else class='container'>
+  <block wx:for="{{itemsList}}" wx:key="unique">
+    <navigator url="{{item.url}}" class='cont-item disflex'>
+      <view class='item-l flexn'>
+        <view class='title'>{{item.title}}</view>
+        <view class='img-box' wx:if="{{item.showMode != 1}}">
+          <view class='video-box' wx:if="{{item.video && item.showMode == 2}}">
+            <image  mode="aspectFill" class='video' src="{{item.video.pic}}"></image>
+            <view class='mask'></view>
+          </view>
+          <view class='video-box2' wx:if="{{item.video && item.showMode == 3}}">
+            <image mode="aspectFill" class='video' src="{{item.video.pic}}"></image>
+            <view class='mask'></view>
+          </view>
+          <image wx:if="{{item.img[0].length>0 && item.showMode == 2}}" class='pic2' src="{{item.img}}" lazy-load='true' mode='aspectFill'></image>
+          <image wx:if="{{item.img && item.showMode == 3}}" wx:for="{{item.img}}" wx:for-item="items" wx:key="uniqueImg" class='pic3'  src='{{items}}' lazy-load='true' mode='aspectFill'></image>
+        </view>
+        <view class='info'>
+          <text wx:if="{{item.isZd == 1}}" class="zhid">置顶</text>
+          <text>{{item.address}}</text>
+          <text>{{item.readerNum}}阅读</text>
+        </view>
+      </view>
+      <view class='item-r'  wx:if="{{item.showMode == 1}}">
+        <view class='video-box' wx:if="{{item.video}}">
+          <image mode="aspectFill" class='video' src="{{item.video.pic}}"></image>
+          <view class='mask'></view>
+        </view>
+        <image wx:if="{{item.img}}" class='pic' src="{{item.img}}" lazy-load='true' mode='aspectFill'></image>
+      </view>
+    </navigator>
+  </block>
+  <view class='hold-bottom' wx:if="{{holdBot.show}}">
+    <view class="loading" wx:if="{{holdBot.loading}}">
+      <text></text>
+      <text></text>
+      <text></text>
+      <text></text>
+      <text></text>
+    </view>
+    {{holdBot.text}}  
+  </view>
+</view>
+<!-- 公共导航 -->
+<view class="foot-hold"></view>
+<template is="footer" data="{{navIndex,foter}}" />

@@ -1,0 +1,10 @@
+<template name="footer">
+ <view class="foot-bx disflex">
+  <block wx:for="{{foter}}" wx:key="item" wx:for-index="index">
+    <navigator wx:if="{{item.isOpen == 1}}" class="flexn {{navIndex==index?'active':''}}" hover-class="none" open-type="redirect" url="{{item.url}}">
+      <icon class="{{item.icon}}"></icon>
+      <label>{{item.txt}}</label>
+    </navigator>
+  </block>
+  </view>
+</template>

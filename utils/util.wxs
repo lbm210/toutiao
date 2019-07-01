@@ -1,0 +1,37 @@
+var Common = {
+  FormatDate: function (value) 
+  {
+    var D = getDate(parseInt(value + "000"));
+    var year = D.getFullYear();
+    var month = D.getMonth() + 1;
+    var date = D.getDate();
+    var hour = D.getHours();
+    var minute = D.getMinutes();
+    var second = D.getSeconds();
+    // return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second; 
+    return year + "-" + month + "-" + date; 
+  },
+  FormatDateDetail: function (value) {
+    var D = getDate(parseInt(value + "000"));
+    var year = D.getFullYear();
+    var month = D.getMonth() + 1;
+    var date = D.getDate();
+    var hour = D.getHours();
+    var minute = D.getMinutes();
+    var second = D.getSeconds();
+    if (second < 10) second = "0" + second;
+    if (minute < 10) minute = "0" + minute;
+    if (hour < 10) hour = "0" + hour;
+    return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second; 
+  },
+  ToNumber:function(value){
+    if (!value)return 0;
+    return parseInt(value)
+
+  }
+}
+module.exports = {
+  FormatDate: Common.FormatDate,
+  FormatDateDetail: Common.FormatDateDetail,
+  ToNumber: Common.ToNumber
+}

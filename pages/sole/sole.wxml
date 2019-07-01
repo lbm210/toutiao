@@ -1,0 +1,139 @@
+<!--pages/sole/sole.wxml-->
+<import src="../footer/footer.wxml" />
+<import src="../load/load.wxml" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view wx:else class='tab-box'>
+  <!--Tab布局-->
+  <view class='nav'>
+    <view class="default {{0 == currentIndex ? 'on' : ''}}" bindtap='titleClick' data-idx='0'>
+      <text>独家看点</text>
+    </view>
+
+    <view class="default {{1 == currentIndex ? 'on' : ''}}" bindtap='titleClick' data-idx='1'>
+      <text>特色专栏</text>
+    </view>
+  </view>
+
+  <!--内容布局-->
+  <swiper class='swiper' bindchange='pagechange' current='{{currentIndex}}'>
+    <swiper-item class='swiper'>
+      <scroll-view class='scroll-box' scroll-y bindscrolltolower="onBottom" lower-threshold="20">
+        <block wx:for="{{columnArticleData}}">
+          <view class="item-list">
+            <view id="{{item.id}}" bindtap="goArticleInfo">
+              <text class="tit">{{item.tit}}</text>
+              <view class='video-box' wx:if="{{item.video}}">
+                <image mode="aspectFill" class='video' src="{{item.video.pic}}"></image>
+                <view class='mask'></view>
+              </view>
+              <view class="item-img" wx:else="{{!item.video}}">
+                <image mode="aspectFill" src="{{item.picUrl}}"></image>
+              </view>
+            </view>
+            <view class="item-bot disflex">
+              <view class="bot-l flexn">
+                <view class="name">{{item.name}}</view>
+                <view class="period">第{{item.period}}期</view>
+                <view class="read">{{item.read}}阅读</view>
+              </view>
+              <view wx:if="{{shieldIsOpen==0}}" class="bot-r">
+                <view>
+                  <image src="http://img.pccoo.cn/headline-xcx/images/column-wx.png"></image>好友
+                   <button type="default" data-tit="{{item.tit}}" data-id="{{item.id}}" data-pic="{{item.picUrl}}" open-type="share"><view class="icon wx"></view>发给好友</button>
+                </view>
+                <view>
+                  <image src='http://img.pccoo.cn/headline-xcx/images/column-circle.png'></image>朋友圈
+                  <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+                  <button wx:if="{{hasUserInfo}}" data-title="{{item.tit}}" data-pic="{{item.picUrl}}" data-id="{{item.id}}" bindtap="shareFn">生成海报</button>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+        <view class='hold-bottom' wx:if="{{holdBot.show}}">
+          <view class="loading" wx:if="{{holdBot.loading}}"></view>
+          {{holdBot.text}}
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item class='swiper column-swiper'>
+     <scroll-view class='scroll-box' scroll-y bindscrolltolower="onBottom" lower-threshold="20">
+      <block wx:for="{{columnAllData}}">
+        <view class="item-list1" id="{{item.id}}" bindtap="goColumnInfo">
+          <view class="item-img">
+            <image mode="aspectFill" src="{{item.picUrl}}"></image>
+            <view class="cover disflex">
+              <view class="flexn">
+                <view class="name">{{item.name}}</view> · {{item.stateName}}
+                <view class="period">{{item.period}}</view>期
+              </view>
+              <view class="attention">
+                <view class="icon"></view>{{item.attention}}人次关注</view>
+            </view>
+          </view>
+          <view class="txt-box">
+            <view class="icon">
+              <image mode="aspectFill" src="{{item.iconUrl}}"></image>
+            </view>
+            {{item.tit}}
+            <view class="go">进入专栏
+              <view class="row"></view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <view class='hold-bottom' wx:if="{{holdBot.show}}">
+        <view class="loading" wx:if="{{holdBot.loading}}">
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+          <text></text>
+        </view>
+        {{holdBot.text}}
+      </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+  <!--邀请好友一起-->
+  <view class="share-cover" wx:if="{{flag}}">
+    <view class="share-box">
+      <button class="v-style pop-close" type="default" bindtap="cancelShareFn"></button>
+      <view class="poster">
+        <view class="poster-box">
+          <view class="ban-box">
+            <image class="banner" mode="aspectFill" src="{{banner}}"></image>
+            <view class="logo-box">
+              <image mode="aspectFill" class="logo" src="{{logo}}"></image>
+              <view>{{siteName}}</view>
+            </view>
+          </view>
+          <view class="bot-box">
+            <text class="tit">{{popTitle}}</text>
+            <view class="disflex">
+              <image mode="aspectFill" class="ewx" src="{{ewx}}"></image>
+              <view class="flexn">
+                <view class="p1">
+                  <image mode="aspectFill" class="avatar" src="{{avatar}}"></image>
+                  <text class="nickName">{{nickName}}</text>
+                  <text>正在读这篇文章</text>
+                </view>
+                <text class="p2">长按小程序码，进入<text class="site">{{popSite}}</text>查看详情</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="poster-tip">{{posterTip}}</view>
+        <button class="save-btn" bindtap="{{saveBind}}">{{saveBtn}}</button>
+      </view>
+    </view>
+    <view class="canvas-box">
+      <canvas canvas-id="mycanvas" />
+    </view>
+  </view>
+</view>
+<!-- 公共导航 -->
+<view class="foot-hold"></view>
+<template is="footer" data="{{navIndex,foter}}" />

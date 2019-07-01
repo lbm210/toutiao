@@ -1,0 +1,27 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/headerline_column/headerline_column",
+    "pages/headerline_bbs/headerline_bbs",
+    "pages/headerline/headerline",
+    "pages/drynessFire/drynessFire",
+    "pages/sole/sole",
+    "pages/hotList/hotList",
+    "pages/columnInfo/columnInfo",
+    "pages/weixinlink/weixinlink",
+    "pages/load/load"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.3.4",
+      "provider": "wxa75efa648b60994b"
+    }
+  }
+}
